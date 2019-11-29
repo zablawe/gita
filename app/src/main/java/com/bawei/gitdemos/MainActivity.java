@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         OtherFragment otherFragment = new OtherFragment();
         ShowFragment showFragment = new ShowFragment();
         MyFragment myFragment = new MyFragment();
+
         fragmentArrayList.add( otherFragment );
         fragmentArrayList.add( showFragment );
         fragmentArrayList.add( myFragment );
@@ -81,4 +82,6 @@ public class MainActivity extends AppCompatActivity {
         pager = findViewById( R.id.view_pager );
         radioGroup = findViewById( R.id.radio_group );
     }
+
+    
 }
