@@ -1,6 +1,7 @@
 package com.bawei.gitdemos.frag;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,14 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bawei.gitdemos.MyActivity;
 import com.bawei.gitdemos.R;
 
+public class OtherFragment extends Fragment {
 
-public class MyFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate( R.layout.fragment_my, container, false );
+        View view = inflater.inflate( R.layout.fragment_other, container, false );
         return view;
     }
 
@@ -40,8 +42,5 @@ public class MyFragment extends Fragment {
 
     private void inniDate(Bundle savedInstanceState) {
 
-
     }
-
-
 }

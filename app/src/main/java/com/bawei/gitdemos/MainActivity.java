@@ -1,10 +1,18 @@
 package com.bawei.gitdemos;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
+
+import com.bawei.gitdemos.frag.MyFragment;
+import com.bawei.gitdemos.frag.OtherFragment;
+import com.bawei.gitdemos.frag.ShowFragment;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,13 +24,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
         inniView();
-
-    }
-
-    private void inniView() {
-
-        pager = findViewById( R.id.view_pager );
-        radioGroup = findViewById( R.id.radio_group );
+        final ArrayList <Fragment> fragmentArrayList = new ArrayList <>();
+        OtherFragment otherFragment = new OtherFragment();
+        ShowFragment showFragment = new ShowFragment();
+        MyFragment myFragment = new MyFragment();
+        fragmentArrayList.add( otherFragment );
+        fragmentArrayList.add( showFragment );
+        fragmentArrayList.add( myFragment );
 
         pager.addOnPageChangeListener( new ViewPager.OnPageChangeListener() {
             @Override
@@ -32,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int i) {
-            radioGroup.check( radioGroup.getChildAt( i ).getId() );
+                radioGroup.check( radioGroup.getChildAt( i ).getId() );
             }
 
             @Override
@@ -56,6 +64,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         } );
+          pager.setAdapter( new FragmentPagerAdapter(getSupportFragmentManager()) {
+              @Override
+              public Fragment getItem(int i) {
+                  return fragmentArrayList.get( i );
+              }
 
+              @Override
+              public int getCount() {
+                  return fragmentArrayList.size();
+              }
+          } );
+    }
+
+    private void inniView() {
+        pager = findViewById( R.id.view_pager );
+        radioGroup = findViewById( R.id.radio_group );
     }
 }

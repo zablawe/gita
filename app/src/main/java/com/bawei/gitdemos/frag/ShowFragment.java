@@ -1,6 +1,7 @@
 package com.bawei.gitdemos.frag;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,13 +11,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.bawei.gitdemos.MyActivity;
 import com.bawei.gitdemos.R;
 
 
 public  class ShowFragment extends Fragment {
 
     private Button button;
+    private TextView textView;
 
     @Nullable
     @Override
@@ -33,6 +37,8 @@ public  class ShowFragment extends Fragment {
 
     private void inniView(View view) {
         button = view.findViewById( R.id.nexts );
+        textView = view.findViewById( R.id.text_view );
+
     }
 
 
@@ -43,10 +49,13 @@ public  class ShowFragment extends Fragment {
     }
 
     private void inniDate(Bundle savedInstanceState) {
+
         button.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                 Intent intent = new Intent(getActivity(), MyActivity.class );
+                 intent.putExtra( "key", textView.getText().toString() );
+                 startActivity( intent );
             }
         } );
     }
